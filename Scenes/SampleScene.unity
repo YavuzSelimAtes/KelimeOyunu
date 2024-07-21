@@ -4553,6 +4553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kelime: {fileID: 520846838110871087, guid: 6e739bfa079a2fe48a7236684ee8b718, type: 3}
+  klon: {fileID: 0}
   kelimeBaslangic: {fileID: 649354800}
 --- !u!1 &649697919
 GameObject:
