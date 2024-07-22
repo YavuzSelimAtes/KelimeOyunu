@@ -11,8 +11,9 @@ public class KelimeHaraket : MonoBehaviour
     GameObject oyunKontrol;
     GameObject yenikelime;
     Vector3 pozisyon;
-    int kelimeKonum = 4;
+    int kelimeKonum = 3;
     int hiz = 3;
+    bool durdumu=false;
 
     System.Random random;
     void Start()
@@ -26,11 +27,37 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (collision.gameObject.tag == "Taban")
         {
+            durdumu = true;
             Destroy(yenikelime.GetComponent<KelimeHaraket>());
             yenikelime.GetComponent<Rigidbody2D>().gravityScale = 1;
             oyunKontrol.GetComponent<OyunKontrol>().KelimeOlustur();
-            kelimeKonum = 4;
+            Debug.Log(oyunKontrol.GetComponent<OyunKontrol>().satir8[kelimeKonum]);
+            kelimeKonum = 3;
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "satir1")
+            oyunKontrol.GetComponent<OyunKontrol>().satir1[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir2")
+            oyunKontrol.GetComponent<OyunKontrol>().satir2[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir3")
+            oyunKontrol.GetComponent<OyunKontrol>().satir3[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir4")
+            oyunKontrol.GetComponent<OyunKontrol>().satir4[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir5")
+            oyunKontrol.GetComponent<OyunKontrol>().satir5[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir6")
+            oyunKontrol.GetComponent<OyunKontrol>().satir6[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir7")
+            oyunKontrol.GetComponent<OyunKontrol>().satir7[kelimeKonum] = harf.text[0];
+        if (collision.gameObject.tag == "satir8")
+        {
+            Debug.Log("burdayim");
+            oyunKontrol.GetComponent<OyunKontrol>().satir8[kelimeKonum] = harf.text[0];
+        }
+            
     }
 
     void kelimeHareket()
@@ -41,7 +68,7 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (kelimeKonum == 1)
+            if (kelimeKonum == 0)
             {
                 return;
             }
@@ -57,7 +84,7 @@ public class KelimeHaraket : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
 
-            if (kelimeKonum == 8)
+            if (kelimeKonum == 7)
             {
                 return;
             }
@@ -76,8 +103,7 @@ public class KelimeHaraket : MonoBehaviour
             hiz = 3;
         
     }
-
-    public string harfOlustur()
+    string harfOlustur()
     {
         char harfUret;
         do
@@ -92,5 +118,7 @@ public class KelimeHaraket : MonoBehaviour
         pozisyon = transform.position;
         kelimeHareket();
         haraket();
+
+        
     }
 }
