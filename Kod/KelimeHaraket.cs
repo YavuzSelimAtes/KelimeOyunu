@@ -11,9 +11,9 @@ public class KelimeHaraket : MonoBehaviour
     GameObject oyunKontrol;
     GameObject yenikelime;
     Vector3 pozisyon;
-    int kelimeKonum = 3;
+    int kelimeKonumx = 3;
+    int kelimeKonumy = -1;
     int hiz = 3;
-    bool durdumu=false;
 
     System.Random random;
     void Start()
@@ -27,36 +27,33 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (collision.gameObject.tag == "Taban")
         {
-            durdumu = true;
+            oyunKontrol.GetComponent<OyunKontrol>().harfdeposu[kelimeKonumy,kelimeKonumx] = harf.text[0];
             Destroy(yenikelime.GetComponent<KelimeHaraket>());
             yenikelime.GetComponent<Rigidbody2D>().gravityScale = 1;
             oyunKontrol.GetComponent<OyunKontrol>().KelimeOlustur();
-            Debug.Log(oyunKontrol.GetComponent<OyunKontrol>().satir8[kelimeKonum]);
-            kelimeKonum = 3;
+            kelimeKonumx = 3;
+            kelimeKonumy = -1;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "satir1")
-            oyunKontrol.GetComponent<OyunKontrol>().satir1[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir2")
-            oyunKontrol.GetComponent<OyunKontrol>().satir2[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir3")
-            oyunKontrol.GetComponent<OyunKontrol>().satir3[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir4")
-            oyunKontrol.GetComponent<OyunKontrol>().satir4[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir5")
-            oyunKontrol.GetComponent<OyunKontrol>().satir5[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir6")
-            oyunKontrol.GetComponent<OyunKontrol>().satir6[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir7")
-            oyunKontrol.GetComponent<OyunKontrol>().satir7[kelimeKonum] = harf.text[0];
+            kelimeKonumy++;
         if (collision.gameObject.tag == "satir8")
-        {
-            Debug.Log("burdayim");
-            oyunKontrol.GetComponent<OyunKontrol>().satir8[kelimeKonum] = harf.text[0];
-        }
+            kelimeKonumy++;
             
     }
 
@@ -68,7 +65,7 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (kelimeKonum == 0)
+            if (kelimeKonumx == 0)
             {
                 return;
             }
@@ -78,13 +75,13 @@ public class KelimeHaraket : MonoBehaviour
                 transform.position = pozisyon;
             }
 
-            kelimeKonum--;
+            kelimeKonumx--;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
 
-            if (kelimeKonum == 7)
+            if (kelimeKonumx == 7)
             {
                 return;
             }
@@ -94,7 +91,7 @@ public class KelimeHaraket : MonoBehaviour
                 transform.position = pozisyon;
             }
 
-            kelimeKonum++;
+            kelimeKonumx++;
         }
 
         if(Input.GetKey(KeyCode.DownArrow))
@@ -119,6 +116,5 @@ public class KelimeHaraket : MonoBehaviour
         kelimeHareket();
         haraket();
 
-        
     }
 }

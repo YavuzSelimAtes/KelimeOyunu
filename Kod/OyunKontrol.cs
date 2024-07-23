@@ -11,14 +11,7 @@ public class OyunKontrol : MonoBehaviour
     public GameObject klon;
     public Transform kelimeBaslangic;
 
-    public char[] satir1 = new char[8];
-    public char[] satir2 = new char[8];
-    public char[] satir3 = new char[8];
-    public char[] satir4 = new char[8];
-    public char[] satir5 = new char[8];
-    public char[] satir6 = new char[8];
-    public char[] satir7 = new char[8];
-    public char[] satir8 = new char[8];
+    public char[,] harfdeposu = new char[8, 8];
 
     void Start()
     {
@@ -30,9 +23,5 @@ public class OyunKontrol : MonoBehaviour
     {
         klon = Instantiate(kelime, kelimeBaslangic.position, kelime.transform.rotation);
     }
-
-
-
-   
 
 }
