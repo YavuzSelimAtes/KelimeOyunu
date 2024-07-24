@@ -27,7 +27,10 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (collision.gameObject.tag == "Taban")
         {
+            Debug.Log(kelimeKonumy);
+            Debug.Log(kelimeKonumx);
             oyunKontrol.GetComponent<OyunKontrol>().harfdeposu[kelimeKonumy,kelimeKonumx] = harf.text[0];
+            oyunKontrol.GetComponent<OyunKontrol>().kutular[kelimeKonumy, kelimeKonumx] = yenikelime;
             Destroy(yenikelime.GetComponent<KelimeHaraket>());
             yenikelime.GetComponent<Rigidbody2D>().gravityScale = 1;
             oyunKontrol.GetComponent<OyunKontrol>().KelimeOlustur();
