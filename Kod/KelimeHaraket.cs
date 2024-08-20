@@ -15,9 +15,9 @@ public class KelimeHaraket : MonoBehaviour
     int kelimeKonumy = -1;
     int hiz = 3;
 
-    static int sayac = 0;
-
     System.Random random;
+
+    char[] harfListesi = { 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'Ç', 'Ç', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'F', 'F', 'G', 'G', 'Ð', 'H', 'H', 'I', 'I', 'I', 'Ý', 'Ý', 'Ý', 'Ý', 'Ý', 'J', 'K', 'K', 'K', 'K', 'K', 'K', 'L', 'L', 'L', 'L', 'L', 'L', 'M', 'M', 'M', 'M', 'M', 'N', 'N', 'N', 'N', 'O', 'O', 'O', 'Ö', 'P', 'P', 'R', 'R', 'R', 'R', 'R', 'S', 'S', 'S', 'S', 'Þ', 'Þ', 'T', 'T', 'T', 'T', 'T', 'U', 'U', 'U', 'Ü', 'Ü', 'V', 'V', 'Y', 'Y', 'Y', 'Z', 'Z', 'Z'};
     void Start()
     {
         random = new System.Random();
@@ -106,17 +106,8 @@ public class KelimeHaraket : MonoBehaviour
     string harfOlustur()
     {
         char harfUret;
-        /*do
-        {
-            harfUret = (char)random.Next('A', 'Z' + 1);
-        } while (harfUret == 'Q' || harfUret == 'W' || harfUret == 'X');*/
 
-        if (sayac == 0) harfUret = 'A';
-        else if (sayac == 1) harfUret = 'B';
-        else if (sayac == 2) harfUret = 'A';
-        else harfUret = 'T';
-
-        sayac++;
+        harfUret = harfListesi[random.Next(harfListesi.Length)];
 
         return harfUret.ToString();
     }
