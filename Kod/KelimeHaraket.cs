@@ -15,6 +15,8 @@ public class KelimeHaraket : MonoBehaviour
     int kelimeKonumy = -1;
     int hiz = 3;
 
+    static int sayac = 0;
+
     System.Random random;
     void Start()
     {
@@ -27,8 +29,6 @@ public class KelimeHaraket : MonoBehaviour
     {
         if (collision.gameObject.tag == "Taban")
         {
-            Debug.Log(kelimeKonumy);
-            Debug.Log(kelimeKonumx);
             oyunKontrol.GetComponent<OyunKontrol>().harfdeposu[kelimeKonumy,kelimeKonumx] = harf.text[0];
             oyunKontrol.GetComponent<OyunKontrol>().kutular[kelimeKonumy, kelimeKonumx] = yenikelime;
             Destroy(yenikelime.GetComponent<KelimeHaraket>());
@@ -106,10 +106,17 @@ public class KelimeHaraket : MonoBehaviour
     string harfOlustur()
     {
         char harfUret;
-        do
+        /*do
         {
             harfUret = (char)random.Next('A', 'Z' + 1);
-        } while (harfUret == 'Q' || harfUret == 'W' || harfUret == 'X');
+        } while (harfUret == 'Q' || harfUret == 'W' || harfUret == 'X');*/
+
+        if (sayac == 0) harfUret = 'A';
+        else if (sayac == 1) harfUret = 'B';
+        else if (sayac == 2) harfUret = 'A';
+        else harfUret = 'T';
+
+        sayac++;
 
         return harfUret.ToString();
     }
