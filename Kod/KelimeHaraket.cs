@@ -15,15 +15,11 @@ public class KelimeHaraket : MonoBehaviour
     int kelimeKonumy = -1;
     int hiz = 3;
 
-    System.Random random;
 
-    char[] harfListesi = { 'A', 'A', 'A', 'A', 'A', 'A', 'A', 'B', 'B', 'C', 'C', 'Ç', 'Ç', 'D', 'D', 'D', 'E', 'E', 'E', 'E', 'E', 'E', 'F', 'F', 'G', 'G', 'Ð', 'H', 'H', 'I', 'I', 'I', 'Ý', 'Ý', 'Ý', 'Ý', 'Ý', 'J', 'K', 'K', 'K', 'K', 'K', 'K', 'L', 'L', 'L', 'L', 'L', 'L', 'M', 'M', 'M', 'M', 'M', 'N', 'N', 'N', 'N', 'O', 'O', 'O', 'Ö', 'P', 'P', 'R', 'R', 'R', 'R', 'R', 'S', 'S', 'S', 'S', 'Þ', 'Þ', 'T', 'T', 'T', 'T', 'T', 'U', 'U', 'U', 'Ü', 'Ü', 'V', 'V', 'Y', 'Y', 'Y', 'Z', 'Z', 'Z'};
     void Start()
     {
-        random = new System.Random();
         oyunKontrol = GameObject.Find("OyunKontrol");
         yenikelime = oyunKontrol.GetComponent<OyunKontrol>().klon;
-        harf.text = harfOlustur();
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -102,14 +98,6 @@ public class KelimeHaraket : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.DownArrow))
             hiz = 3;
         
-    }
-    string harfOlustur()
-    {
-        char harfUret;
-
-        harfUret = harfListesi[random.Next(harfListesi.Length)];
-
-        return harfUret.ToString();
     }
     void Update()
     {
